@@ -1,13 +1,12 @@
-let count;
-let second;
-let minutes;
-let hour;
+let count=0;
+let second=0;
+let minutes=0;
+let hour=0;
 let timerid
 
 $(document).ready(function(){
     //スタートボタン
     $(".start").click(function(){
-        count=0,second=0,minutes=0,hour=0;
         $(".start").prop("disabled",true);
         $(".stop").prop("disabled",false);
         $(".reset").prop("disabled",false);
@@ -46,6 +45,7 @@ $(document).ready(function(){
     $(".stop").click(function(){
         clearInterval(timerid);
         $(".stop").prop("disabled",true);
+        $(".start").prop("disabled",false);
     });
     
     //リセットボタン
@@ -55,7 +55,11 @@ $(document).ready(function(){
         $(".second").text(0);
         $(".minutes").text(0);
         $(".hour").text(0);
+        $(".reset").prop("disabled",true);
+        $(".stop").prop("disabled",true);
         $(".start").prop("disabled",false);
+        clearInterval(timerid);
+        
     });
     
 });
